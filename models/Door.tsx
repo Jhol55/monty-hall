@@ -32,6 +32,6 @@ export default class DoorModel {
     }
 
     setOpen() {
-        return new DoorModel(this.#number, this.#selected, true, this.#present)
+        return new DoorModel(this.#number, false, true, this.#present)
     }
 }
