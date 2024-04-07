@@ -1,20 +1,23 @@
-import { useState } from 'react'
-import DoorModel from '../models/Door'
-import styles from './styles/Door.module.css'
+import Gift from './Gift'
+import styles from '../styles/Door.module.css'
 
 interface DoorProps {
-    value: DoorModel
+    number: number
+    selected: boolean
+    open: boolean
+    gift: boolean
+    onSelect: () => void
+    onOpen: () => void
 }
 
-export default function Door(props: DoorProps) {
-    const [door, setDoor] = useState(props.value)
-
-    return (
-        <div className={door.selected ? `${styles.container} ${styles.selected}` : door.open ? `${styles.container} ${styles.open}` : styles.container}>
-            <div className={styles.frame} onClick={() => setDoor(door.setSelected())}></div>
-            <div className={styles.number}>{door.number}</div>                      
-            <div className={styles.knob} onClick={() => setDoor(door.setOpen())}></div>
+export default function Door({number, selected, open, gift, onSelect, onOpen}: DoorProps) {   
+    return (  
+        <div className={selected ? `${styles.container} ${styles.selected}` : open ? `${styles.container} ${styles.open}` : styles.container}>
+            <div className={styles.frame} onClick={onSelect}></div>
+            <div className={styles.number}>{number}</div>                        
+            <div className={styles.knob} onClick={onOpen}></div>         
             <div className={styles.floor}></div>
+            {open && gift && <Gift />}
         </div>
     )
 }

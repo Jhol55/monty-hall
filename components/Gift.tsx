@@ -1,6 +1,7 @@
-import styles from './styles/Present.module.css'
+import styles from '../styles/Gift.module.css'
 
-export default function Present() {
+
+export default function Gift() {
     return (
         <div className={styles.container}>
             <div className={styles.top}></div>
